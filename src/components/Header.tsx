@@ -1,22 +1,42 @@
 "use client"
 import {useTranslations} from 'next-intl';
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useMediaQuery} from "react-responsive";
 import {Link, usePathname} from "@/i18n/routing";
 import {useLocale} from 'next-intl';
-export interface HeaderProps {
+import ServiceList from "@/src/components/ServiceList";
 
+export type Locale = 'ua' | 'en' | 'ru';
+
+export interface Service {
+    id: number
+    title_ru?: string
+    title_ua?: string
+    title_en?: string
+    slug: string
+    img: string
+    content_ru: string
+    content_ua: string
+    content_en: string
+    order?: number
+    status: string
+    created_at?: string
+    updated_at: string
 }
 
-const Header = ({}: HeaderProps) => {
-    const locale = useLocale();
+const Header = ({}) => {
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
+    const locale: string = useLocale();
     const pathname = usePathname();
     const isTablet = useMediaQuery({maxWidth: 800})
     const t = useTranslations();
     const [isRivne, setIsRivne] = useState(false)
-    console.log(isTablet)
+    const [services, setServices] = useState([])
 
     useEffect(() => {
+        fetch(`${API_URL}/fetch-all-services`).then(res => res.json()).then(res => {
+            setServices(res);
+        })
     }, []);
 
     return (
@@ -407,8 +427,7 @@ c834 -833 1532 -1523 1551 -1534 52 -27 193 -25 285 6 100 33 247 111 336 178
                                     ></path>
                                 </svg>
                             </a>
-                            <ul>
-                            </ul>
+                            <ServiceList services={services} />
                         </li>
                         <li>
                             <a href="'/'+$i18n.locale+'/about'">
@@ -494,13 +513,19 @@ c834 -833 1532 -1523 1551 -1534 52 -27 193 -25 285 6 100 33 247 111 336 178
                         <span>{locale.toUpperCase()}</span>
                         <ul>
                             <li>
-                                <Link style={locale === 'ua' ? {color:'#fac853'}:{}} href={pathname} locale='ua'>UA</Link>
+                                <Link
+                                    style={locale === 'ua' ? {color: '#fac853'} : {}} href={pathname} locale='ua'
+                                >UA</Link>
                             </li>
                             <li>
-                                <Link style={locale === 'ru' ? {color:'#fac853'}:{}} href={pathname} locale='ru'>RU</Link>
+                                <Link
+                                    style={locale === 'ru' ? {color: '#fac853'} : {}} href={pathname} locale='ru'
+                                >RU</Link>
                             </li>
                             <li>
-                                <Link style={locale === 'en' ? {color:'#fac853'}:{}} href={pathname} locale="en">EN</Link>
+                                <Link
+                                    style={locale === 'en' ? {color: '#fac853'} : {}} href={pathname} locale="en"
+                                >EN</Link>
                             </li>
                         </ul>
                     </div>
