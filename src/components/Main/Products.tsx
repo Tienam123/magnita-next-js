@@ -7,6 +7,8 @@ import Link from "next/link";
 import AdvantageItem from "@/src/components/Main/AdvantageItem";
 import ProductItem from "@/src/components/Main/ProductItem";
 import {Product} from "@/types";
+import {API_URL} from "@/contants";
+
 export interface ProductsProps {
 
 }
@@ -60,7 +62,6 @@ const advantages = [
 ];
 
 const Products = ({}: ProductsProps) => {
-    const API_URL = process.env.NEXT_PUBLIC_API_URL;
     const t = useTranslations();
     const [products, setProducts] = useState<Product[]>([])
     useEffect(() => {
