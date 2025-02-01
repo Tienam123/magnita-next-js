@@ -604,8 +604,9 @@ section.first-block {
 
           img.adv-img {
             position: absolute;
-            width: 4vw;
-            top: -25%;
+            width: 5vw;
+            height: 5vh;
+            top: 0;
             transform: translateY(50%);
             right: 1vw;
           }
@@ -626,15 +627,16 @@ section.first-block {
 
             img.adv-img {
               width: 4vw;
-              top: -18%;
+              height: 5vh;
+              top: 0;
             }
           }
 
           &:last-child {
             img.adv-img {
-              top: -31%;
-              right: -3vw;
-              width: 9vw;
+              top: 0;
+              right: 0.5vw;
+              width: 5vw;
             }
           }
         }
