@@ -95,7 +95,7 @@ const Criteries = ({}: CriteriesProps) => {
                 </p>
                 <div className="inner">
                     {items.map(item => (
-                        <div key={item.id} className={clsx('item lazybg',{wide:item.wide})} data-lazybg={item.image}>
+                        <div key={item.id} className={clsx('item lazybg', {wide: item.wide})} data-lazybg={item.image}>
                             <p className="title">{t(item.title)}</p>
                             <p className="second">{t(item.desc)}</p>
                             {item.imgSrc && <img src={item.imgSrc} alt="" width={300} height={200} loading={"lazy"}/>}
