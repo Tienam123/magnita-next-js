@@ -1,1 +1,1 @@
-export const API_URL = 'http://magnita.com/api';
+export const API_URL = 'http://magnita.com.ua/api';
