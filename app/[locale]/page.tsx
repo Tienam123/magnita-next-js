@@ -12,7 +12,7 @@ import Callback from "@/src/components/Callback";
 import MainDescription from "@/src/components/Main/MainDescription";
 
 
-export async function getProductsPortfolio() {
+async function getProductsPortfolio() {
     try {
         const response = await fetch(`${API_URL}api/fetch-all-portfolio`)
         if (!response.ok) {
