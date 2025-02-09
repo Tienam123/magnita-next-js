@@ -14,7 +14,7 @@ const images:string[] = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.webp", "prot_2.j
 const Certificates = ({}: CertificatesProps) => {
     const t = useTranslations();
     useEffect(() => {
-        var gallery = new SimpleLightbox('.sert-block button')
+        var gallery = new SimpleLightbox('.sert-block a')
     }, []);
     return (
         <section className="certificates">
@@ -58,9 +58,9 @@ const Certificates = ({}: CertificatesProps) => {
                                     <>
                                         {images.map(slide => (
                                             <SwiperSlide key={slide}>
-                                                <button href={`/img/sert/${slide}`}
+                                                <a href={`/img/sert/${slide}`}
                                                     style={{backgroundImage: `url(/img/sert/${slide})`,backgroundSize:'cover',minHeight:'200px',width:'100%',display:'block'}}>
-                                                </button>
+                                                </a>
                                             </SwiperSlide>
                                         ))}
                                     </>

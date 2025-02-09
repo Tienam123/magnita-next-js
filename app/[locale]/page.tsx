@@ -18,8 +18,10 @@ async function getProductsPortfolio() {
         if (!response.ok) {
             throw new Error('Failed to fetch products')
         }
-        return response.json() as PortfolioItemType[];
+        const data = await response.json();
+        return data as PortfolioItemType[];
     } catch (e) {
+        return []
     }
 }
 export default async function Home() {
