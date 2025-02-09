@@ -54,26 +54,34 @@ const Certificates = ({}: CertificatesProps) => {
                             </ul>
                             <div className="sert-block">
 
-                                <Swiper slidesPerView={3} loop={true} spaceBetween={10} autoplay={true} modules={[Pagination]}>
+                                <Swiper slidesPerView={3} loop={true} spaceBetween={10} autoplay={true} modules={[Pagination]} pagination={{clickable: true}}>
                                     <>
                                         {images.map(slide => (
                                             <SwiperSlide key={slide}>
-                                                <a href={`/img/sert/${slide}`}
-                                                    style={{backgroundImage: `url(/img/sert/${slide})`,backgroundSize:'cover',minHeight:'200px',width:'100%',display:'block'}}>
+                                                <a
+                                                    href={`/img/sert/${slide}`}
+                                                    style={{
+                                                        backgroundImage: `url(/img/sert/${slide})`,
+                                                        display: 'block',
+                                                        backgroundSize: 'cover',
+                                                        minHeight: '200px',
+                                                        width: '100%',
+                                                        minWidth: "100px"
+                                                    }}
+                                                >
                                                 </a>
                                             </SwiperSlide>
                                         ))}
                                     </>
                                 </Swiper>
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-)
-    ;
+    )
+        ;
 };
 
 Certificates.propTypes = {};
