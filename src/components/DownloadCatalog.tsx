@@ -4,7 +4,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import '@/src/styles/DownloadCatalogue.scss'
-import {Pagination} from "swiper/modules";
+import {Autoplay, Pagination} from "swiper/modules";
+import {Link} from "@/i18n/routing";
 
 export interface DownloadCatalogProps {
 
@@ -18,7 +19,9 @@ const DownloadCatalog = ({}: DownloadCatalogProps) => {
 
                 <Swiper
                     pagination={{ clickable: true }}
-                modules={[Pagination]}
+                modules={[Pagination,Autoplay]}
+                    autoplay={true}
+                    loop={true}
                 >
                     <SwiperSlide
                     >
@@ -89,7 +92,8 @@ const DownloadCatalog = ({}: DownloadCatalogProps) => {
                             </div>
                         </div>
                     </SwiperSlide>
-                    <SwiperSlide>
+                    <SwiperSlide
+                    >
                         <div className="inner">
                             <div className="content">
                                 <h2 data-aos="fade-up" data-aos-duration="1500">
@@ -145,7 +149,7 @@ const DownloadCatalog = ({}: DownloadCatalogProps) => {
                             </div>
                             <div
                                 className="catalogue-bg"
-                                style={{backgroundImage: 'url(/img/form_slider/3.png)'}}
+                                style={{backgroundImage: 'url(/img/form_slider/1.webp)'}}
                             >
                             </div>
                             <div
@@ -157,11 +161,13 @@ const DownloadCatalog = ({}: DownloadCatalogProps) => {
                             </div>
                         </div>
                     </SwiperSlide>
-                    <SwiperSlide>
+
+                    <SwiperSlide
+                    >
                         <div className="inner">
                             <div className="content">
                                 <h2 data-aos="fade-up" data-aos-duration="1500">
-                                    {t('section_download_cat_title')}
+                                    {t('download_price_title3')}
                                 </h2>
                                 <div className="desc">
                                     <p className="exam">
@@ -194,7 +200,7 @@ const DownloadCatalog = ({}: DownloadCatalogProps) => {
                                             <button className="btn-o">
                                                 <span className="btn-blick"></span>
                                                 <img height="15" width="15" src="/img/download-exel.png" alt=""/>
-                                                {t('download_price_list')}
+                                                {t('download_cat_list')}
                                             </button>
                                         </div>
                                         <div className="policy">
@@ -203,7 +209,7 @@ const DownloadCatalog = ({}: DownloadCatalogProps) => {
                                                 {t('section_callback_agree')}
                                                 <span>
                                     <a
-                                        style={{color: 'blue'}} href="'/'+$i18n.locale+'/policy'"
+                                        style={{color: 'blue'}} href="/policy"
                                     >  {t('section_callback_agree_2')}</a>
                                 </span>
                                             </label>
@@ -213,14 +219,14 @@ const DownloadCatalog = ({}: DownloadCatalogProps) => {
                             </div>
                             <div
                                 className="catalogue-bg"
-                                style={{backgroundImage: 'url(/img/form_slider/3.png)'}}
+                                style={{backgroundImage: 'url(/img/download_catalog.webp)'}}
                             >
                             </div>
                             <div
                                 className="hexahedron"
-                                style={{backgroundImage: 'url(/img/1200848.png)'}}
+                                style={{backgroundImage: 'url(/img/1200848.png)',top:'2vw'}}
                             >
-                                <img height="15" width="15" src="/img/download-exel.png" alt=""/>
+                                <img height="15" width="15" src="/img/pdf_icon.png" alt=""/>
                                 <span>5 Mb</span>
                             </div>
                         </div>

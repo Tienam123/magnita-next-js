@@ -15,7 +15,7 @@ const QuestionItem = ({id, title, value}: QuestionItemProps) => {
             className={clsx('popular-questions__accordion-item', {'minuse': isOpen})} onClick={() => setIsOpen(!isOpen)}
             style={{cursor: 'pointer'}}
         >
-            <div style={{display: 'flex', alignItems: 'center'}}>
+            <div style={{display: 'flex', alignItems: 'center'}} className='popular-questions__accordion-title'>
                 <p className="img faq_img_div">
                     <img
                         loading="lazy" className="faq_img" width="10" height="10"

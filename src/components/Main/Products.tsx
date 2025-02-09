@@ -69,8 +69,7 @@ const Products = ({}: ProductsProps) => {
             duration: 1500,
             once: true,
         });
-        fetch(`${API_URL}/fetch-products`).then(res => res.json()).then(res => {
-            console.log(res)
+        fetch(`${API_URL}api/fetch-products`).then(res => res.json()).then(res => {
             setProducts(res)
         })
     }, []);

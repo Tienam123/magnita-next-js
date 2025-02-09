@@ -5,6 +5,7 @@ import {useMediaQuery} from "react-responsive";
 import {Link, usePathname} from "@/i18n/routing";
 import {useLocale} from 'next-intl';
 import ServiceList from "@/src/components/ServiceList";
+import {API_URL} from "@/contants";
 
 export type Locale = 'ua' | 'en' | 'ru';
 
@@ -25,16 +26,14 @@ export interface Service {
 }
 
 const Header = ({}) => {
-    const API_URL = process.env.NEXT_PUBLIC_API_URL;
     const locale: string = useLocale();
     const pathname = usePathname();
     const isTablet = useMediaQuery({maxWidth: 800})
     const t = useTranslations();
     const [isRivne, setIsRivne] = useState(false)
     const [services, setServices] = useState([])
-
     useEffect(() => {
-        fetch(`${API_URL}/fetch-all-services`).then(res => res.json()).then(res => {
+        fetch(`${API_URL}api/fetch-all-services`).then(res => res.json()).then(res => {
             setServices(res);
         })
     }, []);
@@ -43,10 +42,11 @@ const Header = ({}) => {
         <header className="bg-black">
             <div className='top-header'>
                 <div className="logo-block">
-                    <a href="'/">
+                    <Link href={'/'} locale={locale}
+                    >
                         <img height="30" src="/img/logo_en_new.png" alt=""/>
                         <span dangerouslySetInnerHTML={{__html: t.raw('top_header_logo_desc')}}/>
-                    </a>
+                    </Link>
                     <p>
                         <span dangerouslySetInnerHTML={{__html: t.raw('top_header_activity_1')}}/>
                         <span dangerouslySetInnerHTML={{__html: t.raw('top_header_activity_2')}}/>
@@ -62,7 +62,7 @@ const Header = ({}) => {
                     </div>
                 </div>
                 <div className="calculator">
-                    <a href="'/'+$i18n.locale+'/price-calculator-protective-shutters'" className="btn-o">
+                    <a href="/price-calculator-protective-shutters" className="btn-o">
                         <span className="btn-blick"></span>
                         <img width="15" height="15" src="/img/calculator.png" alt=""/>
                         <span>
@@ -195,7 +195,7 @@ const Header = ({}) => {
                     <ul>
                         <li className="search-field-mobile">
                             <form
-                                action="'/'+$i18n.locale+'/search'"
+                                action="/search"
                             >
                                 <input type="text" name="search" placeholder="$t('i_look_for')"/>
                                 <button>
@@ -228,7 +228,7 @@ c834 -833 1532 -1523 1551 -1534 52 -27 193 -25 285 6 100 33 247 111 336 178
                             </form>
                         </li>
                         <li>
-                            <a href="/">{t('main')}</a>
+                            <Link href="/" locale={locale}>{t('main')}</Link>
                         </li>
                         <li>
                             <a href="">
@@ -247,7 +247,7 @@ c834 -833 1532 -1523 1551 -1534 52 -27 193 -25 285 6 100 33 247 111 336 178
                                     </a>
                                     <ul className="icons">
                                         <li>
-                                            <a href="'/'+$i18n.locale+'/'+links.protective_roller[$i18n.locale]">
+                                            <a href="/links.protective_roller">
                                                 <p
                                                     className="img"
                                                     style={{backgroundImage: 'url(/img/categories/1s.jpg.webp)'}}
@@ -256,7 +256,7 @@ c834 -833 1532 -1523 1551 -1534 52 -27 193 -25 285 6 100 33 247 111 336 178
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="'/'+$i18n.locale+'/transparent-shutters'">
+                                            <a href="transparent-shutters">
                                                 <p
                                                     className="img"
                                                     style={{backgroundImage: 'url(/img/categories/5c.jpg.webp)'}}
@@ -265,7 +265,7 @@ c834 -833 1532 -1523 1551 -1534 52 -27 193 -25 285 6 100 33 247 111 336 178
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="'/'+$i18n.locale+'/'+links.blinds_desc[$i18n.locale]">
+                                            <a href="/links.blinds_desc">
                                                 <p
                                                     className="img"
                                                     style={{backgroundImage: 'url(/img/categories/2c.jpg.webp)'}}
@@ -274,7 +274,7 @@ c834 -833 1532 -1523 1551 -1534 52 -27 193 -25 285 6 100 33 247 111 336 178
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="'/'+$i18n.locale+'/shrutters-individual'">
+                                            <a href="/shrutters-individual">
                                                 <p
                                                     className="img"
                                                     style={{backgroundImage: 'url(/img/categories/10c.jpg.webp)'}}
@@ -283,7 +283,7 @@ c834 -833 1532 -1523 1551 -1534 52 -27 193 -25 285 6 100 33 247 111 336 178
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="'/'+$i18n.locale+'/shutters-kombi'">
+                                            <a href="/shutters-kombi">
                                                 <p
                                                     className="img"
                                                     style={{backgroundImage: 'url(/img/categories/13.jpg.webp)'}}
@@ -292,7 +292,7 @@ c834 -833 1532 -1523 1551 -1534 52 -27 193 -25 285 6 100 33 247 111 336 178
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="'/'+$i18n.locale+'/'+links.shutters_gates_desc[$i18n.locale]">
+                                            <a href="/links.shutters_gates_desc">
                                                 <p
                                                     className="img"
                                                     style={{backgroundImage: 'url(/img/categories/3c.jpg.webp)'}}
@@ -301,7 +301,7 @@ c834 -833 1532 -1523 1551 -1534 52 -27 193 -25 285 6 100 33 247 111 336 178
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="'/'+$i18n.locale+'/'+links.roletni_vorota[$i18n.locale]">
+                                            <a href="/links.roletni_vorota">
                                                 <p
                                                     className="img"
                                                     style={{backgroundImage: 'url(/img/categories/4c.jpg.webp)'}}
@@ -312,7 +312,7 @@ c834 -833 1532 -1523 1551 -1534 52 -27 193 -25 285 6 100 33 247 111 336 178
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="'/'+$i18n.locale+'/sliding-gate'">
+                                            <a href="/sliding-gate">
                                                 <p
                                                     className="img"
                                                     style={{backgroundImage: 'url(/img/categories/5s.jpg.webp)'}}
@@ -333,7 +333,7 @@ c834 -833 1532 -1523 1551 -1534 52 -27 193 -25 285 6 100 33 247 111 336 178
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="'/'+$i18n.locale+'/zhalyuzi'">
+                                            <a href="/zhalyuzi">
                                                 <p
                                                     className="img"
                                                     style={{backgroundImage: 'url(/img/categories/7.webp.webp)'}}
@@ -354,7 +354,7 @@ c834 -833 1532 -1523 1551 -1534 52 -27 193 -25 285 6 100 33 247 111 336 178
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="'/'+$i18n.locale+'/product-parts'">
+                                            <a href="/product-parts">
                                                 <p
                                                     className="img"
                                                     style={{backgroundImage: 'url(/img/categories/11.jpg.webp)'}}
@@ -363,7 +363,7 @@ c834 -833 1532 -1523 1551 -1534 52 -27 193 -25 285 6 100 33 247 111 336 178
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="'/'+$i18n.locale+'/sop-product'">
+                                            <a href="/sop-product">
                                                 <p
                                                     className="img"
                                                     style={{backgroundImage: 'url(/img/categories/9.jpg.webp)'}}
@@ -373,7 +373,7 @@ c834 -833 1532 -1523 1551 -1534 52 -27 193 -25 285 6 100 33 247 111 336 178
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="'/'+$i18n.locale+'/avtomatika-desc'">
+                                            <a href="/avtomatika-desc">
                                                 <p
                                                     className="img"
                                                     style={{backgroundImage: 'url(/img/categories/12c.jpg.webp)'}}
@@ -388,13 +388,13 @@ c834 -833 1532 -1523 1551 -1534 52 -27 193 -25 285 6 100 33 247 111 336 178
                         </li>
                         {isTablet && (
                             <li>
-                                <a href="'/'+$i18n.locale+'/price-calculator-protective-shutters'">
+                                <a href="/price-calculator-protective-shutters">
                                     {t('calculator_worth')}
                                 </a>
                             </li>
                         )}
                         <li>
-                            <a href="'/'+$i18n.locale+'/products'">
+                            <a href="/products'">
                                 {t('products')}
                                 <svg viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -405,20 +405,20 @@ c834 -833 1532 -1523 1551 -1534 52 -27 193 -25 285 6 100 33 247 111 336 178
                             </a>
                             <ul className="show-mobile">
                                 <li>
-                                    <a href="'/'+$i18n.locale+'/products'">{t('protective_shrutters')}</a>
+                                    <a href="/products">{t('protective_shrutters')}</a>
                                 </li>
                                 <li>
-                                    <a href="'/'+$i18n.locale+'/protective-blinds'">{t('protective_blinds')}</a>
+                                    <a href="/protective-blinds">{t('protective_blinds')}</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="'/'+$i18n.locale+'/product-parts'">
+                            <a href="/product-parts">
                                 {t('parts')}
                             </a>
                         </li>
                         <li>
-                            <a href="'/'+$i18n.locale+'/services'">
+                            <a href="/services">
                                 {t('services')}
                                 <svg viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -430,7 +430,7 @@ c834 -833 1532 -1523 1551 -1534 52 -27 193 -25 285 6 100 33 247 111 336 178
                             <ServiceList services={services} />
                         </li>
                         <li>
-                            <a href="'/'+$i18n.locale+'/about'">
+                            <a href="/about'">
                                 {t('about')}
                                 <svg viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -441,18 +441,18 @@ c834 -833 1532 -1523 1551 -1534 52 -27 193 -25 285 6 100 33 247 111 336 178
                             </a>
                             <ul className="show-mobile">
                                 <li>
-                                    <a href="'/'+$i18n.locale+'/portfolio'">{t('portfolio')}</a>
+                                    <a href="/portfolio">{t('portfolio')}</a>
                                 </li>
                                 <li>
-                                    <a href="'/'+$i18n.locale+'/news'">{t('news')}</a>
+                                    <a href="/news'">{t('news')}</a>
                                 </li>
                                 <li>
-                                    <a href="'/'+$i18n.locale+'/reviews'">{t('review')}</a>
+                                    <a href="/reviews'">{t('review')}</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="'/'+$i18n.locale+'/articles'">
+                            <a href="/articles'">
                                 {t('faq')}
                                 <svg viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -463,21 +463,21 @@ c834 -833 1532 -1523 1551 -1534 52 -27 193 -25 285 6 100 33 247 111 336 178
                             </a>
                             <ul className="show-mobile">
                                 <li>
-                                    <a href="'/'+$i18n.locale+'/warranty'">{t('warranty')}</a>
+                                    <a href="/warranty">{t('warranty')}</a>
                                 </li>
                                 <li>
-                                    <a href="'/'+$i18n.locale+'/dostavka-ta-oplata'">{t('delivery')}</a>
+                                    <a href="/dostavka-ta-oplata">{t('delivery')}</a>
                                 </li>
                                 <li>
-                                    <a href="'/'+$i18n.locale+'/articles'">{t('articles')}</a>
+                                    <a href="/articles">{t('articles')}</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="'/'+$i18n.locale+'/dealers'">{t('dealers')}</a>
+                            <a href="/dealers">{t('dealers')}</a>
                         </li>
                         <li>
-                            <a href="'/'+$i18n.locale+'/contacts'">{t('contact')}</a>
+                            <a href="/contacts">{t('contact')}</a>
                         </li>
                     </ul>
                 </nav>
