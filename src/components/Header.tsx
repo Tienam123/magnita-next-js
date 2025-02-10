@@ -231,7 +231,7 @@ c834 -833 1532 -1523 1551 -1534 52 -27 193 -25 285 6 100 33 247 111 336 178
                             <Link href="/" locale={locale}>{t('main')}</Link>
                         </li>
                         <li>
-                            <a href="">
+                            <Link href="/catalog">
                                 {t('catalog_head')}
                                 <svg viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -239,7 +239,7 @@ c834 -833 1532 -1523 1551 -1534 52 -27 193 -25 285 6 100 33 247 111 336 178
                                         fill="#252C32"
                                     ></path>
                                 </svg>
-                            </a>
+                            </Link>
                             <ul className="icons">
                                 <li>
                                     <a href="">
@@ -247,13 +247,13 @@ c834 -833 1532 -1523 1551 -1534 52 -27 193 -25 285 6 100 33 247 111 336 178
                                     </a>
                                     <ul className="icons">
                                         <li>
-                                            <a href="/links.protective_roller">
+                                            <Link locale={locale} href="/catalog/protective-roller-shutters">
                                                 <p
                                                     className="img"
                                                     style={{backgroundImage: 'url(/img/categories/1s.jpg.webp)'}}
                                                 ></p>
                                                 <span>{t('category_1')}</span>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li>
                                             <a href="transparent-shutters">

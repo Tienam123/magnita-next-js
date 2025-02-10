@@ -1,11 +1,11 @@
 "use client"
 import {useTranslations} from "next-intl";
 import {Swiper, SwiperSlide} from "swiper/react";
-import {Link} from "@/i18n/routing";
-import SimpleLightbox from "simplelightbox";
+import '@fancyapps/ui/dist/fancybox/fancybox.css';
 import "simplelightbox/src/simple-lightbox.scss"
 import {Pagination} from "swiper/modules";
 import {useEffect} from "react";
+import {Fancybox} from "@fancyapps/ui";
 
 export interface CertificatesProps {
 
@@ -14,7 +14,8 @@ const images:string[] = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.webp", "prot_2.j
 const Certificates = ({}: CertificatesProps) => {
     const t = useTranslations();
     useEffect(() => {
-        var gallery = new SimpleLightbox('.sert-block a')
+        Fancybox.bind('[data-fancybox="gallery"]', {
+        });
     }, []);
     return (
         <section className="certificates">
@@ -59,6 +60,7 @@ const Certificates = ({}: CertificatesProps) => {
                                         {images.map(slide => (
                                             <SwiperSlide key={slide}>
                                                 <a
+                                                    data-fancybox="gallery"
                                                     href={`/img/sert/${slide}`}
                                                     style={{
                                                         backgroundImage: `url(/img/sert/${slide})`,

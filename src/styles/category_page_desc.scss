@@ -1,3 +1,27 @@
+section.portfolio-page-items .container {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: wrap;
+}
+section.portfolio-page-items .container .item p {
+  position: absolute;
+  bottom: -2.5vw;
+  left: 0;
+  font-size: 1.1vw;
+  transition: 0.3s all ease;
+}
+section.portfolio-page-items .container .item {
+  width: 30%;
+  height: 20vw;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  border-radius: 0.5vw;
+  margin-bottom: 5vw;
+  transition: 0.3s all ease;
+}
 section.category-content {
     background-repeat: no-repeat;
     background-position: center center;

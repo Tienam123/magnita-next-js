@@ -1,10 +1,22 @@
 $lightgray: #efebeb;
 $yellow: #fac853;
 $green: #00c451;
+
 @import "reset";
+@import "nouislider";
 @import "common";
 @import "main";
-@import "category_page_desc";
-@import "policy";
+@import "about_page";
+@import "dealer";
 @import "service_page";
+@import "contact_page";
+@import "portfolio-page";
+@import "news_page";
+@import "category_page_desc";
+@import "productPage";
+@import "basket_page";
 @import "thx_page";
+@import "configuration";
+//@import "dostavka";
+@import "pop_up";
+@import "policy";

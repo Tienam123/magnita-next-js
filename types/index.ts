@@ -7,6 +7,7 @@ export interface Product {
     price: number;
 }
 
+
 export interface PortfolioItemType {
     id: string;
     slug: string;
