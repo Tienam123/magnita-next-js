@@ -30,6 +30,7 @@ export interface Product {
     title_page_ua: string
     title_page_en: string
     type: number
+    [key: string]: string | any;
 }
 interface MontageItem {
     imgSrc:string;
@@ -57,6 +58,7 @@ const controlItems:ControlItem[] = [
         wide: true,
     },
 ];
+type Field = 'table_first_column_name' | 'table_first_column_name_ua' | 'table_first_column_name_en';
 
 
 const ProtectiveRoller = ({}) => {
@@ -64,14 +66,14 @@ const ProtectiveRoller = ({}) => {
     const t = useTranslations();
     const [subTowns, setSubTowns] = useState<Product[]>([])
 
-    function fetchText(item: Product, field: string) {
+    function fetchText(item: Product, field: Field) {
         if (locale === 'ua') {
-            return item[field + '_ua'];
+            return item[field + '_ua'] as string;
         }
         if (locale === 'en') {
-            return item[field + '_en'];
+            return item[field + '_en'] as string;
         }
-        return item[field];
+        return item[field] as string;
     }
 
     const getSubTowns = async (slug: string) => {
