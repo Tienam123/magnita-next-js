@@ -65,7 +65,7 @@ const Zhalyuzi = ({}: ZhalyuziProps) => {
                     <p className="desc">
                         {t('zhaluz_desc_15')}
                     </p>
-                    <div className="btns-block" style={{marginBottom:'0px'}}>
+                    <div className="btns-block" >
                         <Link href="#" className="get-consult-btn-otlivy">
                             {t('get_consultation')}
                         </Link>
