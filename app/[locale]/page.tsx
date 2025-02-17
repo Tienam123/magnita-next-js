@@ -10,6 +10,7 @@ import {PortfolioItemType} from "@/types";
 import Certificates from "@/src/components/Certificates";
 import Callback from "@/src/components/Callback";
 import MainDescription from "@/src/components/Main/MainDescription";
+import {getTranslations} from "next-intl/server";
 
 
 async function getProductsPortfolio() {
@@ -25,13 +26,17 @@ async function getProductsPortfolio() {
     }
 }
 export default async function Home() {
+    const t = await getTranslations()
     const products = await getProductsPortfolio();
     return (
         <div>
             <Hero />
             <Criteries />
             <Products />
-            <Questions />
+            <div className="container block-margin">
+                <h2 data-aos="fade-up" data-aos-duration="1500" className='popular-questions'>{t('faq')}</h2>
+                <Questions />
+            </div>
             <DownloadCatalog />
             <Portfolio products={products}/>
             <Certificates />

@@ -29,7 +29,7 @@ const CatalogList = ({}: CatalogListProps) => {
                 {categories.map((category, index) => (
                     <Link
                         key={index}
-                        href={category.disabled ? '#' : `/catalog/${category.path}`}
+                        href={category.disabled ? '#' : `/catalog${category.path}`}
                         className={`item ${category.disabled ? 'disabled' : ''}`}
                         style={{backgroundImage: `url(${category.img})`}}
                     >

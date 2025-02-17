@@ -256,52 +256,52 @@ c834 -833 1532 -1523 1551 -1534 52 -27 193 -25 285 6 100 33 247 111 336 178
                                             </Link>
                                         </li>
                                         <li>
-                                            <a href="transparent-shutters">
+                                            <Link locale={locale} href="/catalog/transparent-shutters">
                                                 <p
                                                     className="img"
                                                     style={{backgroundImage: 'url(/img/categories/5c.jpg.webp)'}}
                                                 ></p>
                                                 <span>{t('transparent_title')}</span>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a href="/links.blinds_desc">
+                                            <Link locale={locale} href="/catalog/blinds-desc">
                                                 <p
                                                     className="img"
                                                     style={{backgroundImage: 'url(/img/categories/2c.jpg.webp)'}}
                                                 ></p>
                                                 <span>{t('category_2')}</span>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a href="/shrutters-individual">
+                                            <Link locale={locale} href="/catalog/shrutters-individual">
                                                 <p
                                                     className="img"
                                                     style={{backgroundImage: 'url(/img/categories/10c.jpg.webp)'}}
                                                 ></p>
                                                 <span>{t('category_3')}</span>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a href="/shutters-kombi">
+                                            <Link locale={locale} href="/catalog/shutters-kombi">
                                                 <p
                                                     className="img"
                                                     style={{backgroundImage: 'url(/img/categories/13.jpg.webp)'}}
                                                 ></p>
                                                 <span>{t('category_13')}</span>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a href="/links.shutters_gates_desc">
+                                            <Link locale={locale} href="/catalog/shutters-gates-desc">
                                                 <p
                                                     className="img"
                                                     style={{backgroundImage: 'url(/img/categories/3c.jpg.webp)'}}
                                                 ></p>
                                                 <span>{t('category_4')}</span>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a href="/links.roletni_vorota">
+                                            <Link locale={locale} href="/catalog/roletni-vorota">
                                                 <p
                                                     className="img"
                                                     style={{backgroundImage: 'url(/img/categories/4c.jpg.webp)'}}
@@ -309,20 +309,20 @@ c834 -833 1532 -1523 1551 -1534 52 -27 193 -25 285 6 100 33 247 111 336 178
 
                                                 </p>
                                                 <span>{t('rol-vorota')}</span>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a href="/sliding-gate">
+                                            <Link locale={locale} href="/catalog/sliding-gate">
                                                 <p
                                                     className="img"
                                                     style={{backgroundImage: 'url(/img/categories/5s.jpg.webp)'}}
                                                 ></p>
                                                 <span>{t('category_6')}</span>
-                                            </a>
+                                            </Link>
                                         </li>
 
                                         <li className="disabled">
-                                            <a href="javascript:void(0)">
+                                            <Link href="#">
                                                 <p
                                                     className="img"
                                                     style={{backgroundImage: 'url(/img/categories/6.jpg.webp)'}}
@@ -330,20 +330,20 @@ c834 -833 1532 -1523 1551 -1534 52 -27 193 -25 285 6 100 33 247 111 336 178
                                                     <span>{t('section_under_construction')}</span>
                                                 </p>
                                                 <span>{t('category_7')}</span>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a href="/zhalyuzi">
+                                            <Link locale={locale} href="/catalog/zhalyuzi">
                                                 <p
                                                     className="img"
                                                     style={{backgroundImage: 'url(/img/categories/7.webp.webp)'}}
                                                 >
                                                 </p>
                                                 <span>{t('category_8')}</span>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li className="disabled">
-                                            <a href="javascript:void(0)">
+                                            <Link href="#">
                                                 <p
                                                     className="img"
                                                     style={{backgroundImage: 'url(/img/categories/8.jpg.webp)'}}
@@ -351,36 +351,36 @@ c834 -833 1532 -1523 1551 -1534 52 -27 193 -25 285 6 100 33 247 111 336 178
                                                     <span>{t('section_under_construction')}</span>
                                                 </p>
                                                 <span>{t('category_9')}</span>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a href="/product-parts">
+                                            <Link href="/catalog/product-parts">
                                                 <p
                                                     className="img"
                                                     style={{backgroundImage: 'url(/img/categories/11.jpg.webp)'}}
                                                 ></p>
                                                 <span>{t('category_10')}</span>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a href="/sop-product">
+                                            <Link href="/catalog/sop-product">
                                                 <p
                                                     className="img"
                                                     style={{backgroundImage: 'url(/img/categories/9.jpg.webp)'}}
                                                 >
                                                 </p>
                                                 <span>{t('category_11')}</span>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a href="/avtomatika-desc">
+                                            <Link href="/catalog/avtomatika-desc">
                                                 <p
                                                     className="img"
                                                     style={{backgroundImage: 'url(/img/categories/12c.jpg.webp)'}}
                                                 >
                                                 </p>
                                                 <span>{t('category_12')}</span>
-                                            </a>
+                                            </Link>
                                         </li>
                                     </ul>
                                 </li>

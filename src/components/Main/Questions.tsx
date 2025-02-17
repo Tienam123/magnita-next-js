@@ -42,8 +42,7 @@ const Questions = ({}: QuestionsProps) => {
         }
     ];
     return (
-        <div className="container block-margin">
-            <h2 data-aos="fade-up" data-aos-duration="1500" className='popular-questions'>{t('faq')}</h2>
+        <>
             <div className="popular-questions">
                 <ul className="popular-questions__accordion">
                     {questions.map(item => (
@@ -62,7 +61,7 @@ const Questions = ({}: QuestionsProps) => {
                 </div>
             </div>
 
-        </div>
+        </>
     );
 };
 
