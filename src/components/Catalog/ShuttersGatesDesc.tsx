@@ -2,16 +2,18 @@
 import GalleryFancyBox from "@/src/components/ui/GalleryFancyBox";
 import {useTranslations} from "next-intl";
 import ShutterMount from "@/src/components/Catalog/ShutterMount";
-import {ControlItem, MontageItem} from "@/types";
+import {ControlItem, MontageItem, ProductTypeCatalog} from "@/types";
 import RollerControl from "@/src/components/Catalog/RollerControl";
 import {Link} from "@/i18n/routing";
 import DeliveryTowns from "@/src/components/Catalog/DeliveryTowns";
 
 export interface ShuttersGatesDescProps {
-    locale: string
+    locale: string;
+    towns:ProductTypeCatalog[]
 }
 
-const ShuttersGatesDesc = ({locale}: ShuttersGatesDescProps) => {
+const ShuttersGatesDesc = ({locale,towns}: ShuttersGatesDescProps) => {
+
     const montageItems: MontageItem[] = [
         {imgSrc: "/img/products/4f2.jpg", title: "montage_1"},
         {imgSrc: "/img/products/41f.jpg", title: "montage_2"},

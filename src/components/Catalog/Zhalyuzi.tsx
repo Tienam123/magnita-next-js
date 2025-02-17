@@ -39,7 +39,7 @@ const Zhalyuzi = ({}: ZhalyuziProps) => {
                     <div className="video" style={{margin: "50px 0"}}>
                         <iframe
                             src="//www.youtube.com/embed/MybkAmwSSGc?rel=0&amp;fs=1&amp;wmode=transparent" width="100%"
-                            height="600px" frameBorder="0" allowFullScreen=""
+                            height="600px" frameBorder="0" allowFullScreen
                             title="JoomlaWorks AllVideos Player"
                         ></iframe>
                     </div>

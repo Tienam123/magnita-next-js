@@ -1,6 +1,7 @@
 import Breadcrumps from "@/src/components/ui/Breadcrumps";
 import {getLocale, getTranslations} from "next-intl/server";
 import ShuttersGatesDesc from "@/src/components/Catalog/ShuttersGatesDesc";
+import {getSubTowns} from "@/lib/api";
 
 export interface PageProps {
 
@@ -8,6 +9,7 @@ export interface PageProps {
 
 const Page = async ({}: PageProps) => {
     const t = await getTranslations();
+    const towns = await getSubTowns();
     const locale = await getLocale();
     return (
         <>
@@ -17,7 +19,7 @@ const Page = async ({}: PageProps) => {
                     {t('gates_desc_page_h1')}
                 </h1>
             </section>
-            <ShuttersGatesDesc locale={locale}/>
+            <ShuttersGatesDesc towns={towns} locale={locale}/>
         </>
     );
 };
