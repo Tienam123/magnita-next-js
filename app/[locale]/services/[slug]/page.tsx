@@ -4,14 +4,8 @@ import {getLocale, getTranslations} from "next-intl/server";
 import Callback from "@/src/components/Callback";
 import MapComponent from "@/src/components/MapComponent";
 
-interface Params {
-    slug: string
-}
-export interface PageProps {
-    params:Params
-}
-
-async function getService(slug) {
+type Params = Promise<{slug:string}>
+async function getService(slug:string) {
     try {
         const res = await fetch(`${API_URL}api/fetch-service-item/${slug}`);
         return await res.json();
@@ -19,12 +13,13 @@ async function getService(slug) {
     }
 }
 
-const Page = async ({params}: PageProps) => {
-    const service = await getService(params.slug);
-    console.log(service)
+const Page = async (props:{
+    params:Params
+}) => {
+    const {slug} = await props.params
+    const service = await getService(slug);
     const t = await getTranslations();
     const locale = await getLocale();
-    console.log(service[`title_${locale}`])
     return (
         <>
             <section className='breadcrumbs'>

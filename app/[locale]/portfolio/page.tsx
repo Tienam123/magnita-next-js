@@ -5,9 +5,19 @@ import Callback from "@/src/components/Callback";
 import MapComponent from "@/src/components/MapComponent";
 import {Link} from "@/i18n/routing";
 
-export interface PageProps {
-
+export interface PortfolioItemType {
+    id: number
+    title_ru: string
+    title_ua: string
+    title_en: string
+    slug: string
+    img: string
+    order?: number
+    status: string
+    created_at: string
+    updated_at: string
 }
+type Locale = 'en' | 'ua' | 'ru';
 async function getPortfolio() {
     try {
     const res = await fetch(`${API_URL}api/fetch-all-portfolio`);
@@ -16,10 +26,11 @@ async function getPortfolio() {
     catch (e) {
     }
 }
-const Page = async ({}: PageProps) => {
-    const portfolio = await getPortfolio();
-    const locale = await getLocale();
-    console.log(portfolio)
+const Page = async ({}) => {
+    const portfolio:PortfolioItemType[] = await getPortfolio();
+
+    const locale = await getLocale() as Locale;
+    console.log(JSON.stringify(portfolio))
     const t = await getTranslations()
     return (
         <>
@@ -40,7 +51,7 @@ const Page = async ({}: PageProps) => {
             </section>
             <section className="portfolio-page-items">
                 <div className="container">
-                    {portfolio.map(item => (
+                    {portfolio.map((item:PortfolioItemType) => (
                         <Link key={item.id}
                               locale={locale}
                            className="item"

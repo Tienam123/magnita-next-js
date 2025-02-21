@@ -6,45 +6,90 @@ import GalleryFancyBox from "@/src/components/ui/GalleryFancyBox";
 import Callback from "@/src/components/Callback";
 import MapComponent from "@/src/components/MapComponent";
 
-interface Params {
-    slug: string
+
+interface PortfolioItem {
+    title_ru: string;
+    title_ua: string;
+    title_en: string;
+    slug: string;
+    [key: string]: string;
 }
 
-export interface PageProps {
+interface PortfolioImage {
+    img: string;
+    id: number;
+}
+
+// Определяем типы для параметров страницы
+type Params = Promise<{ slug: string }>
+
+export async function generateMetadata(props: {
     params: Params
-}
-
-export async function generateMetadata({params}: PageProps): Promise<Metadata> {
+}){
     const locale = await getLocale()
-    const {slug} = await params;
+   const {slug} = await props.params;
     const item = await getPortfolioItem(slug);
     return {
         title: item[`title_${locale}`]
     }
 }
 
-async function getPortfolioItem(slug) {
+// Обновляем функции с типами Promise
+async function getPortfolioItem(slug: string): Promise<PortfolioItem> {
     try {
         const res = await fetch(`${API_URL}api/fetch-portfolio/${slug}`)
+        if (!res.ok) {
+            throw new Error(`Failed to fetch portfolio item: ${res.statusText}`)
+        }
         return res.json();
     } catch (e) {
+        console.error('Error fetching portfolio item:', e);
+        return {
+            title_ru: '',
+            title_ua: '',
+            title_en: '',
+            slug: ''
+        }; // возвращаем пустой объект вместо null
     }
 }
 
-async function getPortfolioImgs(slug) {
+async function getPortfolioImgs(slug: string): Promise<PortfolioImage[]> {
     try {
-        const res = fetch(`${API_URL}api/fetch-portfolio-images/${slug}`);
-        return (await res).json();
+        const res = await fetch(`${API_URL}api/fetch-portfolio-images/${slug}`);
+        if (!res.ok) {
+            throw new Error(`Failed to fetch portfolio images: ${res.statusText}`)
+        }
+        return res.json();
     } catch (e) {
+        console.error('Error fetching portfolio images:', e);
+        return [];
     }
 }
 
-const Page = async ({params}: PageProps) => {
+async function getAllPortfolioSlugs(): Promise<PortfolioItem[]> {
+    try {
+        const res = await fetch(`${API_URL}api/portfolio`);
+        if (!res.ok) {
+            throw new Error(`Failed to fetch portfolio list: ${res.statusText}`)
+        }
+        return res.json();
+    } catch (e) {
+        console.error('Error fetching portfolio list:', e);
+        return [];
+    }
+}
+
+
+export const revalidate = 3600; // обновление каждый час
+
+ async function Page(props:{
+     params:Params
+ }) {
     const t = await getTranslations()
     const locale = await getLocale();
-    const {slug} = await params;
-    const portfolioItem = await getPortfolioItem(slug);
-    const portfolioImages = await getPortfolioImgs(slug);
+    const params = await props.params;
+    const portfolioItem: PortfolioItem = await getPortfolioItem(params.slug);
+    const portfolioImages: PortfolioImage[] = await getPortfolioImgs(params.slug);
 
     return (
         <>
@@ -64,16 +109,17 @@ const Page = async ({params}: PageProps) => {
             </section>
             <section className="portfolio portfolio-page-item">
                 <div className="container">
-
-                            <GalleryFancyBox images={portfolioImages.map(item => `${API_URL}storage/${item.img}`)} dataId={'test2'} className={'portfolio-items'} itemClass={'item'} />
+                    <GalleryFancyBox 
+                        images={portfolioImages.map((item:{img:string}) => `${API_URL}storage/${item.img}`)} 
+                        dataId={'test2'} 
+                        className={'portfolio-items'} 
+                        itemClass={'item'} 
+                    />
                 </div>
             </section>
             <Callback />
             <MapComponent />
         </>
     );
-};
-
-Page.propTypes = {};
-
+}
 export default Page;
